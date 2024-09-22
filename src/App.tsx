@@ -1,11 +1,17 @@
 import { useState } from "react";
 import "./App.css";
+import PlayField from "./assets/components/PlayField";
 
-const App = () => {
 
-  
-  const createObject = () => {
-    let array = [];
+interface Item {
+  hasItem: boolean
+  clicked: boolean
+}
+
+const App: React.FC = () => {
+
+  const createObject = (): Item[] => {
+    let array: Item[] = [];
     for (let i = 0; i < 36; i++) {
       array.push({
         hasItem: false,
@@ -20,21 +26,21 @@ const App = () => {
      hasItem: true,
      clicked: false,
    };
-    console.log("Массив после изменения случайного объекта:", array);
+    console.log(":", array);
 
     return array;
   };
 
   const [items, setItems] = useState(createObject());
 
-  const createItems = () => {
-    const newItems = createObject() 
-    setItems(newItems)
+  const openBlock = () = {
+    
   }
 
   return (
     <div className="container">
-      <div className="kekw">Kek</div>
+      <div className=""></div>
+      <PlayField items={items} onClick={openBlock} />
     </div>
   );
 };

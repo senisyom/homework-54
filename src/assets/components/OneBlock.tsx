@@ -1,13 +1,16 @@
 import React from "react";
-import './OneBlock.css'
+import "./OneBlock.css";
 
-interface BlockProps{
-
+interface BlockProps {
+  hasItem: boolean;
 }
 
-const OneBlock: React.FC<BlockProps> = () => {
-    return (
-        <div className="one-block">
-        </div>
-    )
-}
+const OneBlock: React.FC<BlockProps> = ({ hasItem }) => {
+  return (
+    <div className={`one-block ${hasItem ? "" : "has-item"}`}>
+      {hasItem ? "💥💣" : ""}
+    </div>
+  );
+};
+
+export default OneBlock;

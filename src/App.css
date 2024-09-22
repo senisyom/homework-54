@@ -1,16 +1,9 @@
-#root {
-  text-align: center;
-}
 
 .container {
- 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
 }
-
-.kekw {
-   border-style:double;
-   border: 1px;
-   border-color: black;
-}
-
-
 
