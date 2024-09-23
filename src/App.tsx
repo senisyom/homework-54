@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import PlayField from "./assets/components/PlayField";
+import Counter from "./assets/components/Counter";
 
 interface Item {
   hasItem: boolean;
@@ -16,32 +17,40 @@ const App: React.FC = () => {
         clicked: false,
       });
     }
-    console.log(array);
     let randomObject = Math.floor(Math.random() * array.length);
 
     array[randomObject] = {
       hasItem: true,
       clicked: false,
     };
-    console.log(":", array);
 
     return array;
   };
 
   const [items, setItems] = useState(createObject());
+  const [count, setCount] = useState(0);
 
   const openBlock = (index: number) => {
     setItems((currentItems) => {
       const newItems = [...currentItems];
-      newItems[index].clicked = true;
+      if (!newItems[index].clicked) {
+        newItems[index].clicked = true;
+        countTries();
+      }
       return newItems;
     });
+  };
+
+  const countTries = () => {
+    setCount((count) => count + 1);
   };
 
   return (
     <div className="container">
       <div className=""></div>
+
       <PlayField items={items} onClick={openBlock} />
+      <Counter count={count} />
     </div>
   );
 };
