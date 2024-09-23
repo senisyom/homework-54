@@ -5,17 +5,17 @@ import OneBlock from "./OneBlock";
 interface Item {
   hasItem: boolean;
     clicked: boolean;
-    onCLick: React.MouseEventHandler
 }
 interface FieldProps {
-  items: Item[];
+    items: Item[];
+    onClick: (index: number) => void
 }
 
-const PlayField: React.FC<FieldProps> = ({ items }) => {
+const PlayField: React.FC<FieldProps> = ({ items, onClick }) => {
   return (
     <div className="play-field">
       {items.map((item, index) => (
-        <OneBlock key={index} hasItem={item.hasItem} />
+          <OneBlock key={index} hasItem={item.hasItem} clicked={item.clicked} onClick={() => onClick(index)} />
       ))}
     </div>
   );

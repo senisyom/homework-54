@@ -2,14 +2,12 @@ import { useState } from "react";
 import "./App.css";
 import PlayField from "./assets/components/PlayField";
 
-
 interface Item {
-  hasItem: boolean
-  clicked: boolean
+  hasItem: boolean;
+  clicked: boolean;
 }
 
 const App: React.FC = () => {
-
   const createObject = (): Item[] => {
     let array: Item[] = [];
     for (let i = 0; i < 36; i++) {
@@ -20,12 +18,11 @@ const App: React.FC = () => {
     }
     console.log(array);
     let randomObject = Math.floor(Math.random() * array.length);
-     console.log("Случайный индекс:", randomObject); 
 
-   array[randomObject] = {
-     hasItem: true,
-     clicked: false,
-   };
+    array[randomObject] = {
+      hasItem: true,
+      clicked: false,
+    };
     console.log(":", array);
 
     return array;
@@ -33,9 +30,13 @@ const App: React.FC = () => {
 
   const [items, setItems] = useState(createObject());
 
-  const openBlock = () = {
-    
-  }
+  const openBlock = (index: number) => {
+    setItems((currentItems) => {
+      const newItems = [...currentItems];
+      newItems[index].clicked = true;
+      return newItems;
+    });
+  };
 
   return (
     <div className="container">
