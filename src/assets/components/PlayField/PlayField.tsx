@@ -1,6 +1,6 @@
 import React from "react";
 import "./PlayField.css";
-import OneBlock from "./OneBlock";
+import OneBlock from "../OneBlock/OneBlock";
 
 interface Item {
   hasItem: boolean;

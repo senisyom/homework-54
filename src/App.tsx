@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import PlayField from "./assets/components/PlayField";
-import Counter from "./assets/components/Counter";
+import PlayField from "./assets/components/PlayField/PlayField";
+import Counter from "./assets/components/Counter/Counter";
+import ResetButton from "./assets/components/ResetButton/ResetButton";
 
 interface Item {
   hasItem: boolean;
@@ -45,12 +46,17 @@ const App: React.FC = () => {
     setCount((count) => count + 1);
   };
 
+  const resetGame = () => {
+    setItems(createObject());
+    setCount(0)
+  };
+
   return (
     <div className="container">
       <div className=""></div>
-
       <PlayField items={items} onClick={openBlock} />
       <Counter count={count} />
+      <ResetButton onClick={resetGame} />
     </div>
   );
 };
